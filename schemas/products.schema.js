@@ -1,12 +1,19 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({
-  productName: { type: String, required: true },
-  content: { type: String, required: true },
-  author: { type: String, required: true },
-  password: { type: String, required: true },
-  status: { type: String, enum: ['FOR_SALE', 'SOLD_OUT'], default: 'FOR_SALE' },
-  createdAt: { type: Date, default: Date.now },
-});
+const schema = new mongoose.Schema(
+  {
+    title: { type: String, required: true },
+    content: { type: String, required: true },
+    author: { type: String, required: true },
+    password: { type: String, required: true },
+    status: {
+      type: String,
+      enum: ['FOR_SALE', 'SOLD_OUT'],
+      default: 'FOR_SALE',
+    },
+  },
+  { timestamps: true }
+);
 
-export default mongoose.model('Product', productSchema);
+const Product = mongoose.model('Product', schema);
+module.exports = Product;

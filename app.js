@@ -1,23 +1,18 @@
-//NOTE - 서버만들기
-import express from 'express';
-import connect from './schemas/index.js';
-import productsRouter from './routes/products.router.js';
+require('dotenv').config();
+const express = require('express');
+//NOTE - MongoDB에 접속 할수 있게 만드는 녀석을 가져옴
+const connect = require('./schemas');
+
 
 const app = express();
-const PORT = 3000;
+app.use(express.json());
+//NOTE -  실제로 MongoDB에 접속
 connect();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+//NOTE - router 설정..
+const router = require('./routes/products.router');
+app.use('/api', router);
 
-const router = express.Router();
-
-router.get('/', (req, res, next) => {
-  return res.json({ message: 'Hi' });
-});
-app.use('/api', [router, productsRouter]);
-
-//NOTE - 서버실행
-app.listen(PORT, () => {
-  console.log(`서버가 포트 ${PORT}에서 실행 중입니다.`);
+app.listen(3000, () => {
+  console.log('3000포트로 서버가 연결 되었습니다.');
 });

@@ -1,13 +1,26 @@
 {
-  "name": "main.js",
+  "name": "main",
   "version": "1.0.0",
   "main": "app.js",
-  "repository": "https://github.com/jiyong89/API-project.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiyong89/API-project.git"
+  },
   "author": "jiyongSong <jiyongsong89@gmail.com>",
   "license": "MIT",
-  "type": "module",
   "dependencies": {
+    "dotenv": "^16.3.2",
     "express": "^4.18.2",
     "mongoose": "^8.1.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/jiyong89/API-project/issues"
+  },
+  "homepage": "https://github.com/jiyong89/API-project#readme",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "description": ""
 }
